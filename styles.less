@@ -3,6 +3,11 @@
 	color:#FFF;
 }
 
+html, body, #menu {
+	min-height:100%;
+	height:100%;
+}
+
 html {
 	min-width:30em;
 	background:#fff;
@@ -112,7 +117,6 @@ pre {
 	margin:0;
 	padding:1px 0;
 	min-height:30em;
-	border:1px solid #f0f0eb;
 	border-width:0 1px;
 
 
@@ -124,10 +128,7 @@ pre {
 
 
 #container {
-	position:relative;
-	margin:0 auto;
-	max-width:54em;
-	border-radius:0 0 4px 4px;
+	margin:0 0 0 25%;
 }
 
 #footer {
@@ -153,9 +154,15 @@ pre {
 #menu {
 	background:#44a;
 	color:#eee;
+	float:left;
+	width: 25%;
+
+	img {
+		margin: 4.5em 4em 2em;
+	}
 
 	#side {
-		padding:0 4em;
+		padding:4em;
 
 		p, ul {
 			font-family:Helvetica,Arial,sans-serif;
@@ -184,8 +191,6 @@ pre {
 		color:#ee6;
 	}
 	ul {
-		position:relative;
-		z-index:100;
 		margin:0;
 		padding:0;
 		text-align:left;
@@ -195,21 +200,17 @@ pre {
 
 
 		a {
-			display:inline-block;
-			padding:0 20px;
+			display:block;
+			padding:0 20px 0 4em;
 			text-decoration:none;
 			font-size:16px;
-			line-height:5em;
+			line-height:4em;
 		}
 
 		a:hover {
 			background:#f0f0eb;
 			color:#000;
 		}
-
-		li:first-child a {
-			padding-left:4em;
-		}	
 	}
 
 
@@ -229,13 +230,6 @@ pre {
 	display:inline;
 }
 
-.horizontal_list li {
-	display:inline-block;
-	margin:0;
-	padding:0;
-	list-style:none;
-}
-
 .date {
 	display:inline-block;
 	font-style:italic;
@@ -244,7 +238,7 @@ pre {
 .item {
 	margin-bottom:3em;
 	padding:0 4em 3em;
-	border-bottom:1px inset #f0f0eb;
+	border-bottom:1px inset #ccc;
 }
 
 .item p,
