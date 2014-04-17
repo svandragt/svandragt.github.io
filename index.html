@@ -2,14 +2,14 @@
 layout: default
 title: Home of Sander van Dragt
 ---
-{% for post in site.posts %}
-<div class="text item">
-	<h2><a href="{{ post.url }}">{{ post.title }}</a><a style="text-decoration:none" class="permalink" href="{{ post.url }}">∞</a></h2>
-	{{ post.content }}
+<h1>{{ site.name }}</h1>
+<div id="body">
+
+	{% for post in site.posts %}
+	<div class="text item">
+		<h2><a href="{{ post.url }}">{{ post.title }}</a><a style="text-decoration:none" class="permalink" href="{{ post.url }}">∞</a></h2>
+		{{ post.content }}
+	</div>
+	{% endfor %}
+
 </div>
-{% endfor %}
-
-
-
-
-
