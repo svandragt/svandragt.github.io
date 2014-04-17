@@ -2,45 +2,14 @@
 layout: default
 title: Home of Sander van Dragt
 ---
-		<ul class="posts">
-		  {% for post in site.posts %}
-			<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-		  {% endfor %}
-		</ul>
+{% for post in site.posts %}
+<div class="text item">
+	<h2><a href="{{ post.url }}">{{ page.title }}</a><a style="text-decoration:none" class="permalink" href="{{ post.url }}">∞</a></h2>
+	{{ content }}
+</div>
+{% endfor %}
 
 
 
 
-			  
 
-		  
-			
-			 
-			<div class="text item">
-			  <h2><a href="http://vandragt.com/post/78436798756/silverstripe-relation-records-management-or-why-do-i">SilverStripe relation records management - or why do I have so many database records?</a><a style="text-decoration:none" class="permalink" href="http://vandragt.com/post/78436798756/silverstripe-relation-records-management-or-why-do-i">∞</a></h2>
-			  <p>You have a bunch of DataObjects that has_many RelatedItems. You might have the following seperate situations:</p>
-
-		<ol><li><p>Get the Dataobject-&gt;RelatedItems() and remove() one RelatedItem. What happens to that RelatedItem?</p></li>
-		<li><p>Delete() a DataObject. What happens to the RelatedItems for that DataObject?</p></li>
-		</ol><p>Regarding 1: (in SilverStripe 3.0.x) - the DataObjectID for that RelatedItem is set to 0.</p>
-
-		<p>Regarding 2: Nothing, their DataObjectID will point to a non-existing record.</p>
-
-		<p><strong>Wrong Expectations</strong></p>
-
-		<p>In both cases I expected the objects to be deleted, but SilverStripe is going for safety first and keeps the records around just in case.</p>
-
-		<p>This means that you might need to write maintenance code if you don’t expect this happening.</p>
-
-		<p><strong>Things to keep in mind</strong></p>
-
-		<p>If you are writing an sync task and want to make sure RelatedItems are fresh, do not delete / remove RelatedItems before creating new ones. You will be creating thousands of records over time.</p>
-
-		<p>Instead, get the list of IDs, and unset the IDs that you find. Then remove any IDs left in the list as they weren’t in the source.</p>
-		  
-	</div> <!-- end single post -->
-
-		  
-			
-			 
-		
