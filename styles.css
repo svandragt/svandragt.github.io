@@ -4,16 +4,13 @@
   background-color: #E13300;
   color: #FFF;
 }
-html,
-body {
-  min-height: 100%;
-  height:100%;
-}
 html {
   min-width: 30em;
   background: #fff;
+  height: 100%;
 }
 body {
+  min-height:100%;
   background: #44a;
   margin: 0;
   padding: 0;
