@@ -6,5 +6,5 @@ permalink: /:categories/:year/:month/:day/:title
 
 url: http://svandragt.github.io
 author: Sander van Dragt
-rss_path: /rss
+# rss_path: /rss
 rss_post_limit: 10
