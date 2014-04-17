@@ -107,9 +107,6 @@ pre {
 #body > h2 {
   padding-left: 2em;
 }
-#container {
-  margin: 0 0 0 25%;
-}
 #footer {
   margin: 20px 0 0;
   padding: 0 10px;
@@ -130,6 +127,8 @@ pre {
   color: #eee;
   float: left;
   width: 25%;
+  min-width: 380px;
+  margin-right: 3em;
 }
 #menu img {
   margin: 4.5em 4em 2em;
