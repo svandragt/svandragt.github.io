@@ -2,3 +2,4 @@ name: Your New Jekyll Site
 markdown: kramdown
 pygments: true
 paginate: 10
+permalink: pretty
