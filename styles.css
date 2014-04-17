@@ -126,14 +126,15 @@ pre {
   margin-left: 24em;
   background: #ffffff;
 }
+#logo {
+  padding: 4.5em 4em 2em;
+  display: block;
+}
 #menu {
   color: #eee;
   float: left;
   width: 24em;
   min-width: 380px;
-}
-#menu img {
-  margin: 4.5em 4em 2em;
 }
 #menu #side {
   padding: 4em;
