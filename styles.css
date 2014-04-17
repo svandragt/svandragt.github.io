@@ -8,13 +8,13 @@ html,
 body,
 #menu {
   min-height: 100%;
-  height: 100%;
 }
 html {
   min-width: 30em;
   background: #fff;
 }
 body {
+  background: #44a;
   margin: 0;
   padding: 0;
   color: #2B2C2E;
@@ -122,13 +122,15 @@ pre {
 #footer a:hover {
   background: rgba(140, 140, 135, 0.125);
 }
+#container {
+  margin-left: 24em;
+  background: #ffffff;
+}
 #menu {
-  background: #44a;
   color: #eee;
   float: left;
-  width: 25%;
+  width: 24em;
   min-width: 380px;
-  margin-right: 3em;
 }
 #menu img {
   margin: 4.5em 4em 2em;
