@@ -5,7 +5,7 @@ title: Home of Sander van Dragt
 <h1>{{ site.name }}</h1>
 <div id="body">
 
-	{% for post in site.posts %}
+	{% for post in paginator.posts %}
 	<div class="text item">
 		<h2><a href="{{ post.url }}">{{ post.title }}</a><a style="text-decoration:none" class="permalink" href="{{ post.url }}">∞</a></h2>
 		{{ post.content }}
