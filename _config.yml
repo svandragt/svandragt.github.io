@@ -1,4 +1,5 @@
 name: VanDragt
+url: http://svandragt.github.io
 author: Sander van Dragt
 markdown: kramdown
 pygments: true
