@@ -5,7 +5,7 @@ date: '2008-02-02T01:16:58+00:00'
 tags: []
 tumblr_url: http://vandragt.com/post/22188862210/tracklist-drome
 ---
-Breaks Friday with Cloudseer @ the Drome! It’s my new spot: 3pm-5pm PST! Start off your weekend with the best breaks mixed by live DJ Cloudseer Writer, with a little bit electro thrown in! Bring all your friends to the Drome :D
+Breaks Friday with Cloudseer @ the Drome! It's my new spot: 3pm-5pm PST! Start off your weekend with the best breaks mixed by live DJ Cloudseer Writer, with a little bit electro thrown in! Bring all your friends to the Drome :D
 
 It was good, managed to cram in a lot of breaks in two hours!
 <table class="border" cellpadding="0" cellspacing="0" height="1018" width="399"><tr><th>#</th>
