@@ -10,7 +10,7 @@ For a long time I have been wanting to switch to Firefox as my main browser. I h
 
 Today I’ll show you how to fix these issues.
 
-Fix Address bar font-size: Install the ChromEdit Plus addon. Then, under *Tools > ChromEdit Plus > ChromEdit* add the following code to the `userChome.css`:
+Fix Address bar font-size: [Install the ChromEdit Plus addon](http://webdesigns.ms11.net/chromeditp.html). Then, under *Tools > ChromEdit Plus > ChromEdit* add the following code to the `userChome.css`:
 
 ```
 #urlbar { font-size: 16px; }
