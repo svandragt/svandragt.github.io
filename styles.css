@@ -4,13 +4,16 @@
   background-color: #E13300;
   color: #FFF;
 }
+html,
+body,
+#menu {
+  min-height: 100%;
+}
 html {
   min-width: 30em;
   background: #fff;
-  height: 100%;
 }
 body {
-  min-height:100%;
   background: #44a;
   margin: 0;
   padding: 0;
@@ -122,7 +125,6 @@ pre {
 #container {
   margin-left: 24em;
   background: #ffffff;
-  min-height: 1500px;
 }
 #logo {
   padding: 4.5em 4em 2em;
@@ -133,6 +135,7 @@ pre {
   float: left;
   width: 24em;
   min-width: 380px;
+  position: fixed;
 }
 #menu #side {
   padding: 4em;
