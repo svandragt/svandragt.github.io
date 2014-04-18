@@ -8,14 +8,14 @@ tags:
 - database
 tumblr_url: http://vandragt.com/post/78436798756/silverstripe-relation-records-management-or-why-do-i
 ---
-You have a bunch of DataObjects that has_many RelatedItems. You might have the following seperate situations:
+You have a bunch of `DataObjects` that `has_many RelatedItems`. You might have the following seperate situations:
 
-1. Get the Dataobject->RelatedItems() and remove() one RelatedItem. What happens to that RelatedItem?
-2. Delete() a DataObject. What happens to the RelatedItems for that DataObject?
+1. Get the `Dataobject->RelatedItems()` and `remove()` one `RelatedItem`. What happens to that `RelatedItem`?
+2. `Delete()` a `DataObject`. What happens to the `RelatedItems` for that `DataObject`?
 
-Regarding 1: (in SilverStripe 3.0.x) - the DataObjectID for that RelatedItem is set to 0.
+Regarding 1: (in SilverStripe 3.0.x) - the `DataObjectID` for that `RelatedItem` is set to 0.
 
-Regarding 2: Nothing, their DataObjectID will point to a non-existing record.
+Regarding 2: Nothing, their `DataObjectID` will point to a non-existing record.
 
 ### Wrong Expectations
 
