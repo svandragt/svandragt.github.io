@@ -4,4 +4,4 @@ author: Sander van Dragt
 markdown: kramdown
 pygments: true
 paginate: 10
-permalink: /:categories/:year/:month/:day/:title
+permalink: pretty
