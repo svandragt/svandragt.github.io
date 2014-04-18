@@ -11,6 +11,7 @@ When writing a Powershell script that checks for changes to Active Directory use
 
 For example, let’s consider the following code:
 
+{% highlight powershell %}
 $csv_file  = "users.csv"
 Import-Csv $csv_file | ForEach-Object {
     $username = $_.USERNAME
@@ -28,13 +29,14 @@ Import-Csv $csv_file | ForEach-Object {
         }
     }
 }
-
+{% endhighlight %}
 
 You will find that all existing accounts come up as having changed. This is because $user.DisplayName is not returned by Get-ADUser.
 
 The issue is resolved by asking Get-ADUser to return all properties:
 
+```
 $ad_user = (Get-ADUser -filter {sAMAccountName -eq $username} -Properties * )
-
+```
 
 Now all properties are returned, and the “account change” filter works as expected.

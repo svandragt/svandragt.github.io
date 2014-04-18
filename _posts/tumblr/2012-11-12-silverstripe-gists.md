@@ -12,4 +12,4 @@ HiddenFields DataExtension: Takes form fields specified through $hidden_fields a
 
 Description DataExtension: Specify a $db_descriptions array to DataObjects to attach formfield descriptions.
 
-update: They are now modules, see my github page.
+**update**: They are now modules, see my [github page](https://github.com/search?q=%40svandragt+silverstripe).
