@@ -16,7 +16,7 @@ First, create a new theme file called `redirect.php` with the following contents
  Template Name: Redirect
  */
  the_post();
- header(''Location: '' . get_the_content());
+ header('Location: ' . get_the_content());
  die();
 {% endhighlight %}
 
