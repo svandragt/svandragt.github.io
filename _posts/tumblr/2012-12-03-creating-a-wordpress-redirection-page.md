@@ -10,7 +10,7 @@ This is the simplest way to add a page redirection feature to your WordPress the
 
 First, create a new theme file called `redirect.php` with the following contents:
 
-```php
+{% highlight php %}
  <?php
  /*
  Template Name: Redirect
@@ -18,7 +18,7 @@ First, create a new theme file called `redirect.php` with the following contents
  the_post();
  header(''Location: '' . get_the_content());
  die();
-```
+{% endhighlight %}
 
 To create a new redirection page:
 

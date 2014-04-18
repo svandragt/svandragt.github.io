@@ -17,13 +17,13 @@ Regarding 1: (in SilverStripe 3.0.x) - the DataObjectID for that RelatedItem is 
 
 Regarding 2: Nothing, their DataObjectID will point to a non-existing record.
 
-## Wrong Expectations
+### Wrong Expectations
 
 In both cases I expected the objects to be deleted, but SilverStripe is going for safety first and keeps the records around just in case.
 
 This means that you might need to write maintenance code if you don’t expect this happening.
 
-## Things to keep in mind
+### Things to keep in mind
 
 If you are writing an sync task and want to make sure RelatedItems are fresh, do not delete / remove RelatedItems before creating new ones. You will be creating thousands of records over time.
 
