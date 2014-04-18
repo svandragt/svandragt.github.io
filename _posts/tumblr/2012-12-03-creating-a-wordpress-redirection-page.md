@@ -8,8 +8,9 @@ tumblr_url: http://vandragt.com/post/57516682363/creating-a-wordpress-redirectio
 ---
 This is the simplest way to add a page redirection feature to your WordPress theme.
 
-First, create a new theme file called redirect.php with the following contents:
+First, create a new theme file called `redirect.php` with the following contents:
 
+```php
  <?php
  /*
  Template Name: Redirect
@@ -17,9 +18,8 @@ First, create a new theme file called redirect.php with the following contents:
  the_post();
  header(''Location: '' . get_the_content());
  die();
-
+```
 
 To create a new redirection page:
 
-New page, change the template to ‘Redirect’
-Switch to HTML editing mode and put the url in the content area.
+`New page`, change the template to ‘Redirect’. Switch to HTML editing mode and put the url in the content area.

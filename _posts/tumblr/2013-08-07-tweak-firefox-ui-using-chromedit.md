@@ -10,11 +10,12 @@ For a long time I have been wanting to switch to Firefox as my main browser. I h
 
 Today I’ll show you how to fix these issues.
 
-Fix Address bar font-size: Install the ChromEdit Plus addon. Then, under Tools > ChromEdit Plus > ChromEdit add the following code to the userChome.css:
+Fix Address bar font-size: Install the ChromEdit Plus addon. Then, under *Tools > ChromEdit Plus > ChromEdit* add the following code to the `userChome.css`:
 
+```
 #urlbar { font-size: 16px; }
-
+```
 
 Press the Save and Restart buttons.  Afterwards you can disable this addon.
 
-Remove the search box: right click on a toolbar > Customise. Drag the searchbox into the Customise Toolbar dialog to remove it from the UI.
+Remove the search box: right click on a *toolbar > Customise*. Drag the searchbox into the *Customise Toolbar* dialog to remove it from the UI.

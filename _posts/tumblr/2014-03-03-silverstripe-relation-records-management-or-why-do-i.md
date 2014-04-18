@@ -10,19 +10,20 @@ tumblr_url: http://vandragt.com/post/78436798756/silverstripe-relation-records-m
 ---
 You have a bunch of DataObjects that has_many RelatedItems. You might have the following seperate situations:
 
-Get the Dataobject->RelatedItems() and remove() one RelatedItem. What happens to that RelatedItem?
-Delete() a DataObject. What happens to the RelatedItems for that DataObject?
+1. Get the Dataobject->RelatedItems() and remove() one RelatedItem. What happens to that RelatedItem?
+2. Delete() a DataObject. What happens to the RelatedItems for that DataObject?
+
 Regarding 1: (in SilverStripe 3.0.x) - the DataObjectID for that RelatedItem is set to 0.
 
 Regarding 2: Nothing, their DataObjectID will point to a non-existing record.
 
-Wrong Expectations
+## Wrong Expectations
 
 In both cases I expected the objects to be deleted, but SilverStripe is going for safety first and keeps the records around just in case.
 
 This means that you might need to write maintenance code if you don’t expect this happening.
 
-Things to keep in mind
+## Things to keep in mind
 
 If you are writing an sync task and want to make sure RelatedItems are fresh, do not delete / remove RelatedItems before creating new ones. You will be creating thousands of records over time.
 
