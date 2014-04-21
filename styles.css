@@ -10,7 +10,6 @@ body,
   min-height: 100%;
 }
 html {
-  min-width: 30em;
   background: #fff;
 }
 body {
@@ -100,7 +99,7 @@ pre {
 }
 #body {
   margin: 0;
-  padding: 1px 0;
+  padding: 1px 3em 1px 3em;
   min-height: 1000px;
   border-width: 0 1px;
 }
@@ -137,30 +136,9 @@ pre {
   min-width: 380px;
   position: fixed;
 }
-#menu #side {
-  padding: 4em;
-}
-#menu #side p,
-#menu #side ul {
-  font-family: Helvetica, Arial, sans-serif;
-}
-#menu #side > h3 {
-  margin: 0;
-  padding: 0;
-  color: #eee;
-  text-shadow: none;
-  font-weight: 700;
-  line-height: 3em;
-}
-#menu #side ul {
-  margin-left: 0;
-  padding-left: 20px;
-}
-#menu #side .gsc-search-box {
-  width: 90%;
-}
 #menu a {
   color: #ee6;
+  overflow: hidden;
 }
 #menu ul {
   margin: 0;
@@ -181,6 +159,28 @@ pre {
   background: #f0f0eb;
   color: #000;
 }
+#side {
+  padding: 4em;
+}
+#side p,
+#side ul {
+  font-family: Helvetica, Arial, sans-serif;
+}
+#side > h3 {
+  margin: 0;
+  padding: 0;
+  color: #eee;
+  text-shadow: none;
+  font-weight: 700;
+  line-height: 3em;
+}
+#side ul {
+  margin-left: 0;
+  padding-left: 20px;
+}
+#side .gsc-search-box {
+  width: 90%;
+}
 .caption p {
   display: inline;
 }
@@ -190,10 +190,13 @@ pre {
 }
 .item {
   margin-bottom: 3em;
-  padding: 0 4em 3em;
+  padding-bottom: 3em;
   border-bottom: 1px inset #ccc;
 }
 .item p,
+.item ul,
+.item ol,
+.item dl,
 .item blockquote {
   max-width: 35em;
 }
@@ -203,4 +206,28 @@ pre {
 .cse .gsc-search-button input.gsc-search-button-v2,
 input.gsc-search-button-v2 {
   margin-top: 8px!important;
+}
+.pagination {
+  background: #ccc;
+  text-align: center;
+}
+@media screen and (max-width: 1000px) {
+  #body {
+    padding: 1px 8%;
+  }
+  #menu ul a,
+  #logo {
+    padding-left: 8%;
+    line-height: 2em;
+  }
+  #side {
+    padding: 2em 8%;
+  }
+  #container {
+    margin-left: 12.25em;
+  }
+  #menu {
+    width: 12.25em;
+    min-width: 0;
+  }
 }

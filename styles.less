@@ -8,7 +8,6 @@ html, body, #menu {
 }
 
 html {
-	min-width:30em;
 	background:#fff;
 }
 
@@ -109,14 +108,14 @@ pre {
 	margin:14px 0;
 	padding:12px 10px;
 	border:1px solid #D0D0D0;
-	background-color:#f9f9f9;
+	background-color:#f9f9f9; 
 	color:#002166;
 	white-space:pre-wrap;
 }
 
 #body {
 	margin:0;
-	padding:1px 0;
+	padding:1px 3em 1px 3em;
 	min-height:1000px;
 	border-width:0 1px;
 
@@ -168,34 +167,9 @@ pre {
 	position:fixed;
 
 
-	#side {
-		padding:4em;
-
-		p, ul {
-			font-family:Helvetica,Arial,sans-serif;
-		}
-
-		>h3 {
-			margin:0;
-			padding:0;
-			color:#eee;
-			text-shadow:none;
-			font-weight:700;
-			line-height:3em;
-		}
-
-		ul {
-			margin-left:0;
-			padding-left:20px;
-		}
-
-		.gsc-search-box {
-			width:90%;
-		}	
-	}
-
 	a {
 		color:#ee6;
+		overflow:hidden;
 	}
 	ul {
 		margin:0;
@@ -220,17 +194,33 @@ pre {
 		}
 	}
 
-
-
-
 }
 
+#side {
+	padding:4em;
 
+	p, ul {
+		font-family:Helvetica,Arial,sans-serif;
+	}
 
+	>h3 {
+		margin:0;
+		padding:0;
+		color:#eee;
+		text-shadow:none;
+		font-weight:700;
+		line-height:3em;
+	}
 
+	ul {
+		margin-left:0;
+		padding-left:20px;
+	}
 
-
-
+	.gsc-search-box {
+		width:90%;
+	}	
+}
 
 
 .caption p {
@@ -244,11 +234,14 @@ pre {
 
 .item {
 	margin-bottom:3em;
-	padding:0 4em 3em;
+	padding-bottom:3em;
 	border-bottom:1px inset #ccc;
 }
 
 .item p,
+.item ul, 
+.item ol,
+.item dl,
 .item blockquote {
 	max-width:35em;
 }
@@ -261,3 +254,33 @@ pre {
 	margin-top:8px!important;
 }
 
+.pagination {
+	background:#ccc;
+	text-align:center;
+}
+
+@media screen and (max-width: 1000px) {
+	#body {
+		padding: 1px 8%;
+	}
+
+	#menu ul a,
+	#logo {
+		padding-left: 8%;
+		line-height: 2em;
+	}
+
+	#side {
+		padding: 2em 8%;
+	}
+
+	#container {
+		margin-left: 12.25em;
+	}
+
+	#menu {
+		width: 12.25em;
+		min-width: 0;
+	}
+
+}
