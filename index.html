@@ -16,5 +16,21 @@ title: VanDragt.com
 	</div>
 	{% endfor %}
 
-	<p><a href="/archive">Older posts</a></p>
+	<div class="pagination">
+	  {% if paginator.previous_page %}
+		{% if paginator.previous_page == 1 %}
+		<a href="/" class="previous">Newer Entries</a>
+		{% else %}
+		<a href="/page{{ paginator.previous_page }}" class="previous">Newer Entries</a>
+		{% endif %}
+	  {% else %}
+	  {% endif %}
+	  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+	  {% if paginator.next_page %}
+		<a href="/page{{ paginator.next_page }}" class="next">Older Entries</a>
+	  {% else %}
+		<span class="next ">Older Entries</span>
+	  {% endif %}
+	</div>
+
 </div>
