@@ -218,7 +218,7 @@ input.gsc-search-button-v2 {
   #menu ul a,
   #logo {
     padding-left: 8%;
-    line-height: 2em;
+    line-height: 3em;
   }
   #side {
     padding: 2em 8%;
@@ -229,5 +229,15 @@ input.gsc-search-button-v2 {
   #menu {
     width: 12.25em;
     min-width: 0;
+  }
+}
+@media screen and (max-width: 500px) {
+  #menu {
+    float: none;
+    position: static;
+    width: 100%;
+  }
+  #container {
+    margin-left: 0;
   }
 }
