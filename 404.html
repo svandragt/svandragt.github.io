@@ -1,14 +1,61 @@
----
-layout: default
-title: Page not found
----
-<h1>{{ site.name }}</h1>
-<div id="body">
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+  <title>{{ page.title }} - Van Dragt</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<h2>Page not found </h2>
+  <meta charset="utf-8">
+  <meta name="author" content="{{ site.author }}" >
+  <meta name="Copyright" content="Copyright (c) {{ site.author }}" >
+  <meta name="viewport" content="width=device-width">
 
-	<p>	The code was willing<br>
-		It considered your request,<br>
-		But the chips were weak.</p>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
 
-</div>
+  <div id="menu">
+	<a href="/" id="logo"><img src="/logo.png" alt="{{ site.name }}" width="258" height="28" /></a>
+	<ul class="horizontal_list">
+	  <li><a href="/archive">Archive</a></li>
+
+	  <li><a href="/about">About</a></li>
+	  <li><a href="https://www.google.co.uk/search?q=site:{{ site.url }}">Search</a></li>
+
+	  <li><a href="/atom.xml">Feed</a></li>
+	</ul>
+	<div id="side">
+	  <h3 id="about">About</h3>
+	  <p>I'm <a href="/about">{{ site.author }}</a>: Web Architect, creator of <a href="http://getbard.com">Bard</a>, <a href="http://www.donationcoder.com/forum/index.php?topic=28912.0">NoteMe</a> and <a href="/about">smaller utilities</a>.</p>
+
+	  <p>I also sometimes write about to interactive and digital media such as desktop, web , scripting, second life and music production.</p>
+	</div>
+  </div>
+  <div id="container">
+
+	   <h1>{{ site.name }}</h1>
+	 <div id="body">
+
+		<h2>Page not found </h2>
+
+		<p>	The code was willing<br>
+			It considered your request,<br>
+			But the chips were weak.</p>
+
+	 </div>
+
+	
+  </div>
+  <script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-58671-4', 'vandragt.com');
+	ga('send', 'pageview');
+
+  </script>
+  </body>
+  </html>
+  
