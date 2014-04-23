@@ -4,14 +4,23 @@ title: Contact me
 ---
 <h1>{{ site.name }}</h1>
 <div id="body">
+	<h2>{{ page.title }} <a style="text-decoration:none" class="permalink" href="{{ page.url }}">∞</a></h2>
 
-	<form action="http://getsimpleform.com/messages?form_api_token=5008ebf7571e56e6873d99e5fc4ea7ad" method="post">
-	  <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
-	  <input type='hidden' name='redirect_to' value='http://vandragt.com/contact/thanks'>
-	  <!-- all your input fields here.... -->
-	  <label>Email<br><input type='email' name='email'></label>
-	  <label>Message<textarea name='message'></textarea></label>
-	  <label>Send<input type='submit' value='Send'></label>
-	</form>
+	<div class="text item">
 
+		<form action="http://getsimpleform.com/messages?form_api_token=5008ebf7571e56e6873d99e5fc4ea7ad" method="post">
+			<!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+			<input type='hidden' name='redirect_to' value='http://vandragt.com/contact/thanks'>
+			<!-- all your input fields here.... -->
+			<label for="name">Email</label>
+			<input type='email' name='email'>
+
+			<label for="message">Message</label>
+			<textarea name='message'></textarea>
+		
+			<label for"send">Send</label>
+			<input type='submit' value='Send message' name="send">
+		</form>
+
+	</div>
 </div>
