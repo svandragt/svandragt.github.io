@@ -1,0 +1,17 @@
+---
+layout: default
+title: Contact me
+---
+<h1>{{ site.name }}</h1>
+<div id="body">
+
+	<form action="http://getsimpleform.com/messages?form_api_token=5008ebf7571e56e6873d99e5fc4ea7ad" method="post">
+	  <!-- the redirect_to is optional, the form will redirect to the referrer on submission -->
+	  <input type='hidden' name='redirect_to' value='http://vandragt.com/contact/thanks'>
+	  <!-- all your input fields here.... -->
+	  <label>Email<br><input type='email' name='email'></label>
+	  <label>Message<textarea name='message'></label>
+	  <input type='submit' value='Send'>
+	</form>
+
+</div>
