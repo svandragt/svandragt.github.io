@@ -1,4 +1,5 @@
 ---
+permalink: /archive/
 layout: default
 title: Archive
 ---

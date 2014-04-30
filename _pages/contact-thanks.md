@@ -1,4 +1,5 @@
 ---
+permalink: /contact/thanks/
 layout: default
 title: Thanks for your message
 ---

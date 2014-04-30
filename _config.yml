@@ -8,3 +8,5 @@ permalink: pretty
 encoding: utf-8
 gems:
   - jekyll-redirect-from
+include: ['_pages']
+relative_permalinks: false
