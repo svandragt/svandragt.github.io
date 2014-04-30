@@ -1,3 +1,4 @@
+{% capture section %}{{ page.url | remove_first:'/' | split:'/' | first }}{% endcapture %}
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -14,14 +15,14 @@
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body class="nav-{{ section }}">
 
   <div id="menu">
     <a href="/" id="logo"><img src="/logo.png" alt="{{ site.name }}" width="258" height="28" /></a>
     <ul class="horizontal_list">
-      <li><a href="/archive">Archive</a></li>
+      <li><a href="/archive" class="archive">Archive</a></li>
 
-      <li><a href="/about">About</a></li>
+      <li><a href="/about" class="about">About</a></li>
       <li><a href="https://www.google.co.uk/search?q=site:{{ site.url }}">Search</a></li>
 
       <li><a href="/atom.xml">Feed</a></li>
