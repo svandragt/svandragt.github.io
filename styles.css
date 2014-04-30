@@ -223,6 +223,9 @@ input.gsc-search-button-v2 {
   padding: 1em 0;
   margin-bottom: 1em;
 }
+.pagination a {
+  text-decoration: none;
+}
 .pagination .previous {
   margin-right: 2em;
 }
