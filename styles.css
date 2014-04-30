@@ -36,10 +36,7 @@ code {
 }
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
   margin: 0 0 14px;
   background-color: transparent;
   color: rgba(68, 68, 68, 0.5);
