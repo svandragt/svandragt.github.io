@@ -21,7 +21,7 @@ title: Contact me
 			<label for="message">Message</label>
 			<textarea name='message' id="message"></textarea>
 		
-			<label for"send">Send</label>
+			<label for="send">Send</label>
 			<input type='submit' value='Send message' name="send" id="send">
 		</form>
 
