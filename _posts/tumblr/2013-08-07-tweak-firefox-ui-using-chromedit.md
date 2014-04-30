@@ -5,6 +5,7 @@ date: '2013-08-07T11:02:56+00:00'
 tags:
 - firefox
 tumblr_url: http://vandragt.com/post/57601810845/tweak-firefox-ui-using-chromedit
+redirect_from: /post/57601810845/tweak-firefox-ui-using-chromedit/
 ---
 For a long time I have been wanting to switch to Firefox as my main browser. I haven’t done so before today because I didn’t like two things: The font-size of the address bar, and having a seperate search box.
 
