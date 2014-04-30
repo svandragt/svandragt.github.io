@@ -6,7 +6,7 @@ tags:
 - hearthstone
 - tips
 tumblr_url: http://vandragt.com/post/76313189168/my-hearthstone-strategy-tips
-redirect_from: /post/76313189168/my-hearthstone-strategy-tips
+redirect_from: /post/76313189168/my-hearthstone-strategy-tips/
 ---
 I’ve been playing Hearthstone, Blizzard’s card game battler, for a month or two now and am enjoying it very much.
 
