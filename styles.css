@@ -187,6 +187,10 @@ pre {
 #side .gsc-search-box {
   width: 90%;
 }
+.about .about,
+.archive .archive {
+  background: #5a5abf;
+}
 .caption p {
   display: inline;
 }
