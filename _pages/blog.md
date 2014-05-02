@@ -1,7 +1,7 @@
 ---
-permalink: /archive/
+permalink: /blog/
 layout: default
-title: Archive
+title: Blog Archive
 ---
 
 <div id="body">   
