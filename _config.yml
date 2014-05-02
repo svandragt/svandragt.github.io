@@ -10,3 +10,4 @@ gems:
   - jekyll-redirect-from
 include: ['_pages']
 relative_permalinks: false
+category-list: [web, software]
