@@ -18,9 +18,9 @@ html {
   background: white;
 }
 body {
-  background: #44a;
   margin: 0;
   padding: 0;
+  background: #44a;
   color: #2B2C2E;
   font: 1em/1.6em 'PT Serif', Georgia, serif;
 }
@@ -71,8 +71,7 @@ h1 a:hover {
   text-decoration: underline;
 }
 h2,
-#menu ul,
-.gallery a {
+#menu ul {
   font-family: wf_SegoeUI, "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Helvetica, Arial, sans-serif;
 }
 h2 {
@@ -94,8 +93,8 @@ h3 {
 input,
 textarea {
   display: block;
-  width: 90%;
   max-width: 30em;
+  width: 90%;
 }
 label {
   display: block;
@@ -120,23 +119,23 @@ pre {
 }
 #container {
   margin-left: 24em;
-  background: #fff;
   min-height: 1000px;
+  background: #fff;
 }
 #logo {
-  padding: 4.5em 4em 2em;
   display: block;
+  padding: 4.5em 4em 2em;
 }
 #menu {
-  color: #eee;
-  float: left;
-  width: 24em;
-  min-width: 380px;
   position: fixed;
+  float: left;
+  min-width: 380px;
+  width: 24em;
+  color: #eee;
 }
 #menu a {
-  color: #ee6;
   overflow: hidden;
+  color: #ee6;
 }
 #menu ul {
   margin: 0;
@@ -173,36 +172,11 @@ pre {
 }
 .section-about .about,
 .section-archive .archive {
-  background: #5a5abf;
+  background: #5A5ABF;
 }
 .date {
   display: inline-block;
   font-style: italic;
-}
-.gallery {
-  overflow: auto;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1em;
-}
-.gallery li {
-  list-style: none;
-  height: 100px;
-  /* lack of media query support fallback */
-
-  min-width: 200px;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-}
-.gallery li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 8em;
-  line-height: 1em;
-  display: block;
-  word-break: break-all;
-  background-size: cover;
 }
 .item {
   margin-bottom: 3em;
@@ -216,17 +190,51 @@ pre {
 .item blockquote {
   max-width: 45em;
 }
-.pcase {
+.gallery {
+  overflow: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0 ;
+}
+.gallery li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  float: left;
+  /* lack of media query support fallback */
+
+  min-width: 200px;
+}
+.gallery li img {
+  max-width: 100%;
+  display: block;
+}
+.projects h3,
+.project h3 {
   text-transform: capitalize;
+  float: left;
+  clear: left;
+  min-width: 10em;
+  line-height: 1.5em;
+}
+.projects h3 + p,
+.project h3 + p {
+  margin-left: 10em;
+}
+.projects ul,
+.project ul,
+.projects li,
+.project li {
+  list-style: none;
 }
 .permalink:hover {
   opacity: 1;
 }
 .pagination {
+  margin-bottom: 1em;
+  padding: 1em 0;
   background: #eee;
   text-align: center;
-  padding: 1em 0;
-  margin-bottom: 1em;
 }
 .pagination a {
   text-decoration: none;
@@ -257,17 +265,31 @@ pre {
     margin-left: 12.25em;
   }
   #menu {
-    width: 12.25em;
     min-width: 0;
+    width: 12.25em;
   }
   h2 {
     font-size: 1.5em;
   }
 }
-@media screen and (max-width: 500px) {
+@media (min-width: 0) {
+  .gallery li {
+    /* undo fallback */
+  
+    min-width: 0;
+    width: 100%;
+  }
+}
+@media (min-width: 1000px) {
+  .gallery li {
+    width: 50%;
+  }
+}
+/* mobile first mate */
+@media (max-width: 500px) {
   #menu {
-    float: none;
     position: static;
+    float: none;
     width: 100%;
   }
   #container {

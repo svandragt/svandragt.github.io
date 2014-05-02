@@ -1,15 +1,14 @@
 ---
-title: Another test project with a long title
-permalink: /projects/test2s/
+title: BackPager
+permalink: /projects/backpager/
 layout: default
 categories: [web]
 project: true
-background: green
 ---
 
 <div id="body">   
 	<h2>{{ page.title }} <a style="text-decoration:none" class="permalink" href="{{ page.url }}">∞</a></h2>
 	<div class="text item">
-			Yo
+			<p>Backpager is an online markdown to html editor.</p>
 	</div>
 </div>

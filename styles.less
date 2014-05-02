@@ -18,10 +18,9 @@ html {
 }
 
 body {
-	background:#44a;
-
 	margin:0;
 	padding:0;
+	background:#44a;
 	color:#2B2C2E;
 	font:1em/1.6em 'PT Serif',Georgia,serif;
 }
@@ -81,8 +80,7 @@ h1 {
 
 
 h2,
-#menu ul,
-.gallery a
+#menu ul 
 {
 	font-family:wf_SegoeUI,"Segoe UI",Segoe,"Segoe WP",Tahoma,Verdana,Helvetica,Arial,sans-serif;
 
@@ -114,12 +112,12 @@ h3 {
 input,
 textarea {
 	display:block;
-	width: 90%;
 	max-width: 30em;
+	width: 90%;
 }
 
 label {
-	display:block
+	display:block;
 }
 
 p {
@@ -149,28 +147,28 @@ pre {
 
 #container {
 	margin-left: 24em;
-	background: #fff;
 	min-height: 1000px;
+	background: #fff;
 }
 
 #logo {
-		padding: 4.5em 4em 2em;
 		display:block;
+		padding: 4.5em 4em 2em;
 
 }
 
 
 #menu {
-	color:#eee;
-	float:left;
-	width: 24em;
-	min-width: 380px;
 	position:fixed;
+	float:left;
+	min-width: 380px;
+	width: 24em;
+	color:#eee;
 
 
 	a {
-		color:#ee6;
 		overflow:hidden;
+		color:#ee6;
 	}
 	ul {
 		margin:0;
@@ -217,7 +215,7 @@ pre {
 
 .section-about .about,
 .section-archive .archive {
-	background: #5A5ABF
+	background: #5A5ABF;
 }
 
 .date {
@@ -225,62 +223,60 @@ pre {
 	font-style:italic;
 }
 
-.gallery {
-	overflow: auto;
-	list-style:none;
-	padding: 0;
-	margin:0 0 1em;
-
-	li {
-		list-style:none;
-		height: 100px;
-		/* lack of media query support fallback */
-		min-width: 200px;
-		padding: 0;
-		margin:0;
-		overflow:hidden;
-
-		a {
-			text-decoration: none;
-			color: #fff;
-			font-size: 8em;
-			line-height: 1em;
-			display:block;
-			word-break: break-all;
-			background-size: cover;
-
-		}
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
 .item {
 	margin-bottom:3em;
 	padding-bottom:3em;
 	border-bottom:1px inset #ccc;
 
+	p,
+	ul, 
+	ol,
+	dl,
+	blockquote {
+		max-width:45em;
+	}
 }
 
-.item p,
-.item ul, 
-.item ol,
-.item dl,
-.item blockquote {
-	max-width:45em;
+.gallery {
+	overflow: auto;
+	list-style:none;
+	margin:0;
+	padding:0 ;
+
+	li {
+
+
+		padding: 0;
+		margin:0;
+		list-style:none;
+		float:left;
+		/* lack of media query support fallback */
+		min-width: 200px;
+
+		img {
+			max-width: 100%;
+			display:block;
+		}
+	}
 }
 
-.pcase {
-	text-transform: capitalize; 
+.projects, .project {
+
+	h3 {
+		text-transform: capitalize; 
+		float:left;
+		clear:left;
+		min-width: 10em;
+		line-height: 1.5em;
+
+		+ p {
+			margin-left: 10em;
+		}
+	}
+
+	ul, li {
+		list-style: none;
+	}
 }
 
 .permalink:hover {
@@ -288,10 +284,10 @@ pre {
 }
  
 .pagination {
+	margin-bottom: 1em;
+	padding: 1em 0;
 	background: #eee;
 	text-align: center;
-	padding: 1em 0;
-	margin-bottom: 1em;
 
 	a {
 		text-decoration: none;
@@ -302,7 +298,7 @@ pre {
 	}
 
 	.next {
-		margin-left: 2em
+		margin-left: 2em;
 	}
 } 
 
@@ -331,8 +327,8 @@ pre {
 	}
 
 	#menu {
-		width: 12.25em;
 		min-width: 0;
+		width: 12.25em;
 	}
 
 	h2 {
@@ -341,16 +337,30 @@ pre {
 
 }
 
-@media screen and (max-width: 500px) {
+@media (min-width: 0) {
+	.gallery li {
+		/* undo fallback */
+		min-width: 0;
+		width:100%;
+	}
+}
+@media (min-width: 1000px) {
+	.gallery li {
+		width: 50%;
+	}
+}
+
+/* mobile first mate */
+@media (max-width: 500px) {
 
 	#menu {
-		float:none;
 		position: static;
+		float:none;
 		width:100%;
 	}
 
 	#container {
-		margin-left:0
+		margin-left:0;
 	}
 }
  

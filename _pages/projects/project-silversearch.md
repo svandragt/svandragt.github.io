@@ -1,15 +1,14 @@
 ---
-title: Test web project!
-permalink: /projects/test/
+title: SilverSearch
+permalink: /projects/silverseach/
 layout: default
 categories: [web]
 project: true
-background: url(https://pbs.twimg.com/profile_banners/7585022/1354527417/1500x500)
 ---
 
 <div id="body">   
 	<h2>{{ page.title }} <a style="text-decoration:none" class="permalink" href="{{ page.url }}">∞</a></h2>
 	<div class="text item">
-			Yo
+			<p>SilverStripe documentation search engine</p>
 	</div>
 </div>
