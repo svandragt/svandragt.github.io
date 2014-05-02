@@ -9,6 +9,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.provision :shell, :path => "vagrant/bootstrap.sh"
 	config.vm.network "private_network", ip: "192.168.60.70"
 	config.vm.network :forwarded_port, host: 4000, guest: 80
+	config.vm.synced_folder ".", "/vagrant", type: "rsync",
+		rsync__exclude: [".git/", "_site"]
 
 	config.vm.provider "virtualbox" do |vb|
 		vb.memory = 1024
