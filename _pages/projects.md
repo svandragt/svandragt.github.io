@@ -11,12 +11,13 @@ title: Projects
 
 {% for cat in site.category-list %}
 <h3 class="pcase">{{ cat }}</h3>
-<ul>
+
+<ul class="gallery">
 		{% for page in site.pages %}
 			{% if page.project == true %}
 				{% for pc in page.categories %}
 					{% if pc == cat %}
-<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+<li><a href="{{ page.url }}" style="background: {{ page.background}}">{{ page.title }}</a></li>
 					{% endif %}
 				{% endfor %} 
 			{% endif %}

@@ -1,10 +1,10 @@
 ---
-title: Test web project!
-permalink: /projects/test/
+title: Another test project with a long title
+permalink: /projects/test2s/
 layout: default
 categories: [web]
 project: true
-background: url(https://pbs.twimg.com/profile_banners/7585022/1354527417/1500x500)
+background: green
 ---
 
 <div id="body">   

@@ -4,13 +4,18 @@
   background-color: #E13300;
   color: #FFF;
 }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html,
 body,
 #menu {
   min-height: 100%;
 }
 html {
-  background: #fff;
+  background: white;
 }
 body {
   background: #44a;
@@ -65,11 +70,15 @@ h1 .permalink {
 h1 a:hover {
   text-decoration: underline;
 }
+h2,
+#menu ul,
+.gallery a {
+  font-family: wf_SegoeUI, "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
 h2 {
   margin: 2em 0 1em;
   font-weight: 400;
   font-size: 2em;
-  font-family: wf_SegoeUI, "Segoe UI", Segoe, "Segoe WP", Tahoma, Verdana, Helvetica, Arial, sans-serif;
 }
 h2 .permalink {
   display: inline-block;
@@ -169,6 +178,31 @@ pre {
 .date {
   display: inline-block;
   font-style: italic;
+}
+.gallery {
+  overflow: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1em;
+}
+.gallery li {
+  list-style: none;
+  height: 100px;
+  /* lack of media query support fallback */
+
+  min-width: 200px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.gallery li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 8em;
+  line-height: 1em;
+  display: block;
+  word-break: break-all;
+  background-size: cover;
 }
 .item {
   margin-bottom: 3em;
