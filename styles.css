@@ -23,6 +23,9 @@ a {
   background-color: transparent;
   color: #039;
 }
+a img {
+  border: none;
+}
 blockquote {
   margin: 0 0 .5em;
   padding: .125em 2em;
@@ -88,9 +91,6 @@ textarea {
 label {
   display: block;
 }
-li > p {
-  margin: 0;
-}
 p {
   margin-top: .5em;
 }
@@ -109,24 +109,10 @@ pre {
   min-height: 1000px;
   border-width: 0 1px;
 }
-#footer {
-  margin: 20px 0 0;
-  padding: 0 10px;
-  text-align: center;
-  font-size: .75em;
-  line-height: 32px;
-}
-#footer a {
-  display: inline-block;
-  padding: 0 20px;
-  text-decoration: none;
-}
-#footer a:hover {
-  background: rgba(140, 140, 135, 0.125);
-}
 #container {
   margin-left: 24em;
-  background: #ffffff;
+  background: #fff;
+  min-height: 1000px;
 }
 #logo {
   padding: 4.5em 4em 2em;
@@ -165,8 +151,7 @@ pre {
 #side {
   padding: 4em;
 }
-#side p,
-#side ul {
+#side p {
   font-family: Helvetica, Arial, sans-serif;
 }
 #side > h3 {
@@ -177,19 +162,9 @@ pre {
   font-weight: 700;
   line-height: 3em;
 }
-#side ul {
-  margin-left: 0;
-  padding-left: 20px;
-}
-#side .gsc-search-box {
-  width: 90%;
-}
 .section-about .about,
 .section-archive .archive {
   background: #5a5abf;
-}
-.caption p {
-  display: inline;
 }
 .date {
   display: inline-block;
@@ -207,12 +182,11 @@ pre {
 .item blockquote {
   max-width: 45em;
 }
+.pcase {
+  text-transform: capitalize;
+}
 .permalink:hover {
   opacity: 1;
-}
-.cse .gsc-search-button input.gsc-search-button-v2,
-input.gsc-search-button-v2 {
-  margin-top: 8px!important;
 }
 .pagination {
   background: #eee;
