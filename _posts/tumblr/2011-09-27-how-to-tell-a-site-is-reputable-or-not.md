@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to tell a site is reputable or not?
+title: How to tell if a site is reputable or not?
 date: '2011-09-27T16:00:31+00:00'
 tags: []
 tumblr_url: http://vandragt.com/post/22189009657/how-to-tell-a-site-is-reputable-or-not
