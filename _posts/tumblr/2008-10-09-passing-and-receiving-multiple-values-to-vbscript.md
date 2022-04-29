@@ -1,8 +1,0 @@
----
-layout: post
-title: Passing and receiving multiple values to VbScript functions
-date: '2008-10-09T12:14:12+00:00'
-tags: []
-tumblr_url: http://vandragt.com/post/22188870464/passing-and-receiving-multiple-values-to-vbscript
----
-Maintaining code can be a real pain in backside. Especially when you’re using shared code, almost always at a later date you will want to make the code more versatile to accommodate a scenario you hadn’t thought of before.  I’ve had experience this in an ASP / VbScript environment, and therefore I’m going to use the terminology of page and functions as opposed to files and classes:  Rework the code and update all pages. This is obviously a bad idea.    To extend inflexible code: Rename the function and create a wrapper in its place to access the function using default parameters that are compatible with your existing codebase.    Create functions that are extendable. To use optional parameters, pass them in an Array or dictionary object. This way you can add additional ones. The benefit that Arrays have over Dictionary objects is that they use less resources. This can be important if you are developing for a popular website.  Another advantage of using Arrays is that you’ll use less code calling the function. Using a dictionary object you’ll have to add each parameter separately, then pass the dictionary object as the parameter of the function.  On the other hand, code will be more legible using dictionary objects. Dictionary objects use  key value pairs to tell you that key A has a value B. You’ll not have to bother about the order of parameters, but you’ll have to know the keys of each function. It results in verbose, legible, resource intensive code.
