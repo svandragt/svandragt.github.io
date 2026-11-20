@@ -49,16 +49,36 @@ function categorise(repo) {
   return config.rows[config.rows.length - 1].id;
 }
 
-const repos = (await listRepos())
-  .filter((r) => r.has_pages && !r.archived && !config.exclude.includes(r.name))
-  .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+// The API's has_pages flag is unreliable, so probe each repo's Pages URL directly.
+const pagesUrl = (r) => `https://${config.user}.github.io/${r.name}/`;
+// Only a confirmed 404 excludes a repo; inconclusive results retry, then fall back to has_pages.
+async function hasLivePages(r) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(pagesUrl(r), { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(15000) });
+      if (res.ok) return true;
+      if (res.status === 404) return false;
+    } catch {}
+    await new Promise((done) => setTimeout(done, 1000 * (attempt + 1)));
+  }
+  return Boolean(r.has_pages);
+}
+const all = (await listRepos()).filter((r) => !r.archived && !config.exclude.includes(r.name));
+const live = [];
+for (let i = 0; i < all.length; i += 16) {
+  const batch = all.slice(i, i + 16);
+  const ok = await Promise.all(batch.map(hasLivePages));
+  live.push(...batch.filter((_, j) => ok[j]));
+}
+console.log(`${all.length} repos, ${live.length} with live Pages`);
+const repos = live.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
 const sites = repos.map((r) => ({
   name: r.name,
   title: r.name.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
   description: r.description || '',
   // GitHub redirects this to the custom domain when one is set; the final URL is recorded after navigation.
-  url: `https://${config.user}.github.io/${r.name}/`,
+  url: pagesUrl(r),
   source: r.html_url,
   language: r.language,
   topics: r.topics || [],
@@ -102,10 +122,11 @@ for (const site of sites) {
   } catch {}
 }
 
-const live = sites.filter((s) => !s.broken);
+const published = sites.filter((s) => !s.broken);
 
+await mkdir(new URL('data/', root), { recursive: true });
 await writeFile(
   new URL('data/sites.json', root),
-  JSON.stringify({ generated: new Date().toISOString(), rows: config.rows.map(({ id, title }) => ({ id, title })), sites: live }, null, 2) + '\n'
+  JSON.stringify({ generated: new Date().toISOString(), rows: config.rows.map(({ id, title }) => ({ id, title })), sites: published }, null, 2) + '\n'
 );
-console.log(`wrote ${live.length} sites`);
+console.log(`wrote ${published.length} sites`);
