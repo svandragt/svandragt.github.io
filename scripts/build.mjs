@@ -1,0 +1,104 @@
+// Fetches all GitHub Pages repos for the configured user, writes data/sites.json
+// and screenshots each site into thumbs/<name>.jpg.
+// Usage: GITHUB_TOKEN=... node scripts/build.mjs [--no-shots]
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
+
+const root = new URL('../', import.meta.url);
+const config = JSON.parse(await readFile(new URL('config.json', root), 'utf8'));
+const token = process.env.GITHUB_TOKEN;
+const headers = {
+  Accept: 'application/vnd.github+json',
+  'User-Agent': 'pages-browser',
+  ...(token ? { Authorization: `Bearer ${token}` } : {}),
+};
+
+async function gh(path) {
+  const res = await fetch(`https://api.github.com/${path}`, { headers });
+  if (!res.ok) throw new Error(`${res.status} ${path}`);
+  return res.json();
+}
+
+async function listRepos() {
+  if (process.env.REPOS_FILE) return JSON.parse(await readFile(process.env.REPOS_FILE, 'utf8'));
+  const repos = [];
+  try {
+    for (let page = 1; ; page++) {
+      const batch = await gh(`users/${config.user}/repos?per_page=100&page=${page}&type=owner`);
+      repos.push(...batch);
+      if (batch.length < 100) break;
+    }
+  } catch (e) {
+    console.warn(`repo list failed (${e.message}), falling back to search`);
+    for (let page = 1; ; page++) {
+      const { items } = await gh(`search/repositories?q=user:${config.user}+fork:true&per_page=100&page=${page}`);
+      repos.push(...items);
+      if (items.length < 100) break;
+    }
+  }
+  return repos;
+}
+
+function categorise(repo) {
+  const hay = [...(repo.topics || []), ...(repo.description || '').toLowerCase().split(/\W+/)];
+  for (const row of config.rows) {
+    if (row.match.some((m) => hay.includes(m))) return row.id;
+  }
+  return config.rows[config.rows.length - 1].id;
+}
+
+const repos = (await listRepos())
+  .filter((r) => r.has_pages && !r.archived && !config.exclude.includes(r.name))
+  .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+
+const sites = repos.map((r) => ({
+  name: r.name,
+  title: r.name.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
+  description: r.description || '',
+  url: r.homepage && /^https?:\/\//.test(r.homepage) ? r.homepage : `https://${config.user}.github.io/${r.name}/`,
+  source: r.html_url,
+  language: r.language,
+  topics: r.topics || [],
+  stars: r.stargazers_count,
+  updated: r.pushed_at,
+  category: categorise(r),
+  thumb: null,
+}));
+
+if (!process.argv.includes('--no-shots')) {
+  const { createRequire } = await import('node:module');
+  const { chromium } = createRequire(import.meta.url)('playwright');
+  await mkdir(new URL('thumbs/', root), { recursive: true });
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
+  for (const site of sites) {
+    try {
+      const res = await page.goto(site.url, { waitUntil: 'networkidle', timeout: 30000 }).catch(() => null);
+      if (res && res.status() === 404) {
+        site.broken = true;
+        console.warn(`skip ${site.name}: 404`);
+        continue;
+      }
+      await page.waitForTimeout(2500);
+      await page.screenshot({ path: new URL(`thumbs/${site.name}.jpg`, root).pathname, type: 'jpeg', quality: 72 });
+      console.log(`shot ${site.name}`);
+    } catch (e) {
+      console.warn(`shot failed ${site.name}: ${e.message}`);
+    }
+  }
+  await browser.close();
+}
+
+for (const site of sites) {
+  try {
+    await access(new URL(`thumbs/${site.name}.jpg`, root));
+    site.thumb = `thumbs/${site.name}.jpg`;
+  } catch {}
+}
+
+const live = sites.filter((s) => !s.broken);
+
+await writeFile(
+  new URL('data/sites.json', root),
+  JSON.stringify({ generated: new Date().toISOString(), rows: config.rows.map(({ id, title }) => ({ id, title })), sites: live }, null, 2) + '\n'
+);
+console.log(`wrote ${live.length} sites`);
