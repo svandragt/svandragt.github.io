@@ -124,6 +124,7 @@ for (const site of sites) {
 
 const published = sites.filter((s) => !s.broken);
 
+await mkdir(new URL('data/', root), { recursive: true });
 await writeFile(
   new URL('data/sites.json', root),
   JSON.stringify({ generated: new Date().toISOString(), rows: config.rows.map(({ id, title }) => ({ id, title })), sites: published }, null, 2) + '\n'
