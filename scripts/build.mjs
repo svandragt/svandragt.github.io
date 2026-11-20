@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const config = JSON.parse(await readFile(new URL('config.json', root), 'utf8'));
-const token = process.env.GITHUB_TOKEN;
+const token = process.env.PAGES_TOKEN || process.env.GITHUB_TOKEN;
 const headers = {
   Accept: 'application/vnd.github+json',
   'User-Agent': 'pages-browser',
@@ -22,9 +22,14 @@ async function gh(path) {
 async function listRepos() {
   if (process.env.REPOS_FILE) return JSON.parse(await readFile(process.env.REPOS_FILE, 'utf8'));
   const repos = [];
+  // With a personal token (PAGES_TOKEN) the authenticated endpoint also lists private repos,
+  // which can still have public Pages sites. The default Actions token only sees public repos.
+  const endpoint = process.env.PAGES_TOKEN
+    ? 'user/repos?affiliation=owner&visibility=all'
+    : `users/${config.user}/repos?type=owner`;
   try {
     for (let page = 1; ; page++) {
-      const batch = await gh(`users/${config.user}/repos?per_page=100&page=${page}&type=owner`);
+      const batch = await gh(`${endpoint}&per_page=100&page=${page}`);
       repos.push(...batch);
       if (batch.length < 100) break;
     }
@@ -79,7 +84,7 @@ const sites = repos.map((r) => ({
   description: r.description || '',
   // GitHub redirects this to the custom domain when one is set; the final URL is recorded after navigation.
   url: pagesUrl(r),
-  source: r.html_url,
+  source: r.private ? null : r.html_url, // private repo links would 404 for visitors
   language: r.language,
   topics: r.topics || [],
   stars: r.stargazers_count,

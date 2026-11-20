@@ -28,6 +28,7 @@ jobs:
       - run: node scripts/build.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
       - name: Assemble site
         run: |
           mkdir _site
