@@ -1,0 +1,9 @@
+{
+  "user": "svandragt",
+  "exclude": ["svandragt.github.io"],
+  "rows": [
+    { "id": "games", "title": "Games", "match": ["game", "roguelike", "roguelite", "godot", "racing", "puzzle", "play"] },
+    { "id": "tools", "title": "Tools & CLIs", "match": ["cli", "tool", "developer-tools", "package-manager", "generator", "dependency-manager"] },
+    { "id": "apps", "title": "Apps & Platforms", "match": [] }
+  ]
+}
