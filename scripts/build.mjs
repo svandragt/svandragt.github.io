@@ -84,7 +84,7 @@ const sites = repos.map((r) => ({
   description: r.description || '',
   // GitHub redirects this to the custom domain when one is set; the final URL is recorded after navigation.
   url: pagesUrl(r),
-  source: r.html_url,
+  source: r.private ? null : r.html_url, // private repo links would 404 for visitors
   language: r.language,
   topics: r.topics || [],
   stars: r.stargazers_count,

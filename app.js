@@ -64,7 +64,8 @@ function openDetail(site, trigger) {
   $('#d-title').textContent = site.title;
   $('#d-desc').textContent = site.description || 'No description yet.';
   $('#d-visit').href = site.url;
-  $('#d-source').href = site.source;
+  $('#d-source').hidden = !site.source;
+  if (site.source) $('#d-source').href = site.source;
   $('#d-meta').innerHTML = [
     isNew(site) ? '<b>New update</b>' : '',
     site.language && esc(site.language),
