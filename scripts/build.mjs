@@ -51,13 +51,17 @@ function categorise(repo) {
 
 // The API's has_pages flag is unreliable, so probe each repo's Pages URL directly.
 const pagesUrl = (r) => `https://${config.user}.github.io/${r.name}/`;
+// Only a confirmed 404 excludes a repo; inconclusive results retry, then fall back to has_pages.
 async function hasLivePages(r) {
-  try {
-    const res = await fetch(pagesUrl(r), { method: 'HEAD', redirect: 'follow' });
-    return res.ok;
-  } catch {
-    return false;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(pagesUrl(r), { method: 'HEAD', redirect: 'follow', signal: AbortSignal.timeout(15000) });
+      if (res.ok) return true;
+      if (res.status === 404) return false;
+    } catch {}
+    await new Promise((done) => setTimeout(done, 1000 * (attempt + 1)));
   }
+  return Boolean(r.has_pages);
 }
 const all = (await listRepos()).filter((r) => !r.archived && !config.exclude.includes(r.name));
 const live = [];
