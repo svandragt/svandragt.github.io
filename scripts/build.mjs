@@ -2,6 +2,7 @@
 // and screenshots each site into thumbs/<name>.jpg.
 // Usage: GITHUB_TOKEN=... node scripts/build.mjs [--no-shots]
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 
 const root = new URL('../', import.meta.url);
 const config = JSON.parse(await readFile(new URL('config.json', root), 'utf8'));
@@ -29,6 +30,7 @@ async function listRepos() {
     }
   } catch (e) {
     console.warn(`repo list failed (${e.message}), falling back to search`);
+    repos.length = 0;
     for (let page = 1; ; page++) {
       const { items } = await gh(`search/repositories?q=user:${config.user}+fork:true&per_page=100&page=${page}`);
       repos.push(...items);
@@ -39,9 +41,10 @@ async function listRepos() {
 }
 
 function categorise(repo) {
-  const hay = [...(repo.topics || []), ...(repo.description || '').toLowerCase().split(/\W+/)];
+  const stem = (w) => w.toLowerCase().replace(/s$/, '');
+  const hay = new Set([...(repo.topics || []), ...(repo.description || '').split(/\W+/)].map(stem));
   for (const row of config.rows) {
-    if (row.match.some((m) => hay.includes(m))) return row.id;
+    if (row.match.some((m) => hay.has(stem(m)))) return row.id;
   }
   return config.rows[config.rows.length - 1].id;
 }
@@ -54,7 +57,8 @@ const sites = repos.map((r) => ({
   name: r.name,
   title: r.name.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
   description: r.description || '',
-  url: r.homepage && /^https?:\/\//.test(r.homepage) ? r.homepage : `https://${config.user}.github.io/${r.name}/`,
+  // GitHub redirects this to the custom domain when one is set; the final URL is recorded after navigation.
+  url: `https://${config.user}.github.io/${r.name}/`,
   source: r.html_url,
   language: r.language,
   topics: r.topics || [],
@@ -72,14 +76,17 @@ if (!process.argv.includes('--no-shots')) {
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   for (const site of sites) {
     try {
-      const res = await page.goto(site.url, { waitUntil: 'networkidle', timeout: 30000 }).catch(() => null);
-      if (res && res.status() === 404) {
+      // A failed navigation throws, so the catch below skips the screenshot.
+      const res = await page.goto(site.url, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+      if (res?.status() === 404) {
         site.broken = true;
         console.warn(`skip ${site.name}: 404`);
         continue;
       }
+      site.url = res?.url() || site.url; // final HTTP redirect target, ignores client-side URL changes
       await page.waitForTimeout(2500);
-      await page.screenshot({ path: new URL(`thumbs/${site.name}.jpg`, root).pathname, type: 'jpeg', quality: 72 });
+      await page.screenshot({ path: fileURLToPath(new URL(`thumbs/${site.name}.jpg`, root)), type: 'jpeg', quality: 72 });
       console.log(`shot ${site.name}`);
     } catch (e) {
       console.warn(`shot failed ${site.name}: ${e.message}`);

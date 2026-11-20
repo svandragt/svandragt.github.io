@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T20:22:33.128Z",
+  "generated": "2026-11-20T20:31:41.680Z",
   "rows": [
     {
       "id": "games",
@@ -62,7 +62,7 @@
       "name": "toolhub",
       "title": "Toolhub",
       "description": "Static site generator that builds a personal tools portfolio from GitHub repos and gists",
-      "url": "https://tools.vandragt.com",
+      "url": "https://tools.vandragt.com/",
       "source": "https://github.com/svandragt/toolhub",
       "language": "Python",
       "topics": [
@@ -180,7 +180,7 @@
       "name": "folio",
       "title": "Folio",
       "description": "Vala GTK two-pane markdown task app for GNOME and Linux with live preview",
-      "url": "https://svandragt.github.io/folio/",
+      "url": "https://folio.vandragt.com/",
       "source": "https://github.com/svandragt/folio",
       "language": "Vala",
       "topics": [

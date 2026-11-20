@@ -137,6 +137,11 @@ async function main() {
   const sites = data.sites;
   const byName = new Map(sites.map((s) => [s.name, s]));
 
+  if (!sites.length) {
+    $('#hero').hidden = true;
+    $('#rows').innerHTML = '<p style="padding:120px var(--gutter)">No projects yet.</p>';
+    return;
+  }
   hero(sites[0]);
   const rowsHtml = [
     row('Recently updated', sites.slice(0, 10)),
